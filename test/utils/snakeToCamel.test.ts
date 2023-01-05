@@ -1,11 +1,9 @@
-import snakeToCamel from '../../src/utils/snakeToCamel';
+import { snakeToCamel } from '../../src/utils/snakeToCamel';
 
-describe('snake to camel', () => {
-  test('one snake', () => {
-    expect(snakeToCamel('user_data')).toBe('userData');
-  });
-
-  test('two snakes', () => {
-    expect(snakeToCamel('snake_to_camel')).toBe('snakeToCamel');
-  });
+test.each([
+  ['user_data', 'userData'],
+  ['snake_to_camel', 'snakeToCamel'],
+  ['snake_to_camel_good', 'snakeToCamelGood'],
+])('a', (a, expected) => {
+  expect(snakeToCamel(a)).toBe(expected);
 });
